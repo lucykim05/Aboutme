@@ -71,12 +71,11 @@ export default function HeroTerminal() {
               >
                 이력서 보기
               </a>
-              <a
-                href="/blog"
-                className="bg-zinc-800 border border-white text-white px-4 py-2 rounded hover:bg-white hover:text-black transition"
-              >
-                블로그 가기
-              </a>
+              <Link href="/blog">
+                <a className="bg-zinc-800 border border-white text-white px-4 py-2 rounded hover:bg-white hover:text-black transition">
+                  블로그 가기
+                </a>
+              </Link>
               <a
                 href="#about"
                 className="text-white underline hover:text-gray-300 transition"
