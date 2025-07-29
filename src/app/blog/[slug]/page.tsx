@@ -3,18 +3,17 @@ import path from 'path';
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import matter from 'gray-matter';
 
+export const dynamic = 'force-dynamic'; // 💥 SSR 강제: 이 한 줄이 핵심
+
 export default async function BlogPage({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
-  const filePath = path.join(
-    process.cwd(),
-    'content',
-    'blog',
-    `${params.slug}.mdx`
-  );
-  const fileContent = fs.readFileSync(filePath, 'utf8');
+  const { slug } = await params;
+
+  const filePath = path.join(process.cwd(), 'content', 'blog', `${slug}.mdx`);
+  const fileContent = await fs.promises.readFile(filePath, 'utf8');
   const { content, data } = matter(fileContent);
 
   return (
