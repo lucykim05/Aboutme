@@ -27,8 +27,7 @@ export default function AboutSection() {
           viewport={{ once: true }}
         >
           안녕하세요, 김희주입니다. JavaScript, TypeScript, Next.js를 중심으로
-          웹 애플리케이션을 만들고 있으며, 정보보안에 대해 추가로 공부 중입니다.
-          임시 내용 블라블라
+          웹 애플리케이션을 만들고 있으며, 임시 내용 블라블라
         </motion.p>
 
         <motion.div

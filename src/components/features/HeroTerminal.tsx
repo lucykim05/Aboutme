@@ -52,7 +52,7 @@ export default function HeroTerminal() {
         {showButtons && (
           <>
             <motion.div
-              className="mt-6 flex gap-4"
+              className="mt-6 flex gap-4 flex-wrap"
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
@@ -70,6 +70,12 @@ export default function HeroTerminal() {
                 className="border border-white text-white px-4 py-2 rounded hover:bg-white hover:text-black transition"
               >
                 이력서 보기
+              </a>
+              <a
+                href="/blog"
+                className="bg-zinc-800 border border-white text-white px-4 py-2 rounded hover:bg-white hover:text-black transition"
+              >
+                블로그 가기
               </a>
               <a
                 href="#about"
