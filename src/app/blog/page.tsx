@@ -3,17 +3,27 @@ import path from 'path';
 import matter from 'gray-matter';
 import Link from 'next/link';
 
+interface Post {
+  slug: string;
+  title: string;
+  date: string;
+  summary: string;
+}
+
 export default function BlogPage() {
   const blogDir = path.join(process.cwd(), 'content/blog');
   const files = fs.readdirSync(blogDir);
 
-  const posts = files.map((filename) => {
+  const posts: Post[] = files.map((filename) => {
     const filePath = path.join(blogDir, filename);
     const fileContent = fs.readFileSync(filePath, 'utf-8');
     const { data } = matter(fileContent);
+
     return {
       slug: filename.replace('.mdx', ''),
-      ...data,
+      title: data.title,
+      date: data.date,
+      summary: data.summary,
     };
   });
 
