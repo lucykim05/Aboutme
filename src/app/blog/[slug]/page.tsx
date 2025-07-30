@@ -2,8 +2,9 @@ import fs from 'fs';
 import path from 'path';
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import matter from 'gray-matter';
+import Link from 'next/link';
 
-export const dynamic = 'force-dynamic'; // 💥 SSR 강제: 이 한 줄이 핵심
+export const dynamic = 'force-dynamic';
 
 export default async function BlogPage({
   params,
@@ -19,8 +20,22 @@ export default async function BlogPage({
   return (
     <div className="min-h-screen bg-black text-white p-6 font-mono">
       <div className="max-w-3xl mx-auto">
+        {/* 🔗 상단 네비게이션 */}
+        <nav className="mb-8 flex gap-4">
+          <Link href="/" className="text-zinc-400 hover:text-white underline">
+            포트폴리오 홈
+          </Link>
+          <Link
+            href="/blog"
+            className="text-zinc-400 hover:text-white underline"
+          >
+            블로그 글 목록
+          </Link>
+        </nav>
+
         <h1 className="text-4xl font-bold mb-4">{data.title}</h1>
         <p className="text-zinc-500 text-sm mb-8">{data.date}</p>
+
         <article className="prose prose-invert">
           <MDXRemote source={content} />
         </article>

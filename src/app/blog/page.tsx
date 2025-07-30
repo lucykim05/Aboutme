@@ -27,9 +27,19 @@ export default function BlogPage() {
     };
   });
 
+  posts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+
   return (
     <div className="min-h-screen bg-black text-white font-mono px-4 py-20">
       <div className="max-w-4xl mx-auto">
+        <div className="mb-6">
+          <Link
+            href="/"
+            className="text-zinc-400 hover:text-white underline transition"
+          >
+            포트폴리오 홈
+          </Link>
+        </div>
         <h1 className="text-3xl font-bold mb-8 border-b border-zinc-700 pb-2">
           Blog
         </h1>

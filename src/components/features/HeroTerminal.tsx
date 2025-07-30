@@ -1,14 +1,18 @@
 'use client';
 
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 
 export default function HeroTerminal() {
   const [lines, setLines] = useState<string[]>([]);
   const [showButtons, setShowButtons] = useState(false);
+  const hasRun = useRef(false); // ✅ 실행 플래그
 
   useEffect(() => {
+    if (hasRun.current) return; // ✅ 이미 실행됐으면 무시
+    hasRun.current = true;
+
     const sequence = async () => {
       const newLines = [
         '> ssh heeju.dev',
@@ -20,14 +24,10 @@ export default function HeroTerminal() {
       ];
 
       for (let i = 0; i < newLines.length; i++) {
-        if (i === 2) {
-          setLines((prev) => [...prev.slice(0, -1), newLines[i]]); // 덮어쓰기!
-        } else {
-          setLines((prev) => [...prev, newLines[i]]);
-        }
-
+        setLines((prev) => [...prev, newLines[i]]);
         await wait(1000);
       }
+
       await wait(200);
       setShowButtons(true);
     };
@@ -80,7 +80,7 @@ export default function HeroTerminal() {
               </Link>
               <a
                 href="#about"
-                className="text-white underline hover:text-gray-300 transition"
+                className="text-white hover:text-gray-300 transition"
               >
                 Contact →
               </a>
