@@ -96,3 +96,40 @@ body {
 .react-calendar__navigation__next2-button {
   margin: 0 8px; /* << 와 <, > 와 >> 사이 간격 */
 }
+
+/* MDX 내용 타이포그래피 튜닝 */
+.prose.prose-invert {
+  --tw-prose-body: #e5e7eb; /* text-zinc-200 */
+  --tw-prose-headings: #fafafa; /* text-zinc-50 */
+  --tw-prose-links: #93c5fd; /* text-blue-300 */
+  --tw-prose-bold: #fafafa;
+  --tw-prose-counters: #a1a1aa;
+  --tw-prose-bullets: #a1a1aa;
+  --tw-prose-hr: #27272a;
+  --tw-prose-quotes: #fafafa;
+  --tw-prose-quote-borders: #3f3f46;
+  --tw-prose-captions: #a1a1aa;
+  --tw-prose-code: #e5e7eb;
+  --tw-prose-pre-code: #e5e7eb;
+  --tw-prose-pre-bg: #111827; /* bg-gray-900 */
+  --tw-prose-th-borders: #3f3f46;
+  --tw-prose-td-borders: #27272a;
+}
+
+/* MDX 헤딩 간격 조금 조정 */
+.prose h1,
+.prose h2,
+.prose h3 {
+  scroll-margin-top: 80px; /* 앵커 이동 시 헤더 가림 방지 */
+}
+
+/* MDX 코드블록 폰트/여백 */
+.prose pre {
+  border-radius: 12px;
+  padding: 12px 14px;
+}
+
+/* MDX 링크 hover 명확히 */
+.prose a:hover {
+  text-decoration: underline;
+}
