@@ -6,3 +6,93 @@ html,
 body {
   @apply bg-zinc-900 text-white font-mono;
 }
+/* ===== Blog Calendar (react-calendar) ===== */
+.rc {
+  --rc-radius: 12px;
+  --rc-tile-size: 44px; /* 필요하면 40~48px 사이로 조절 */
+  background: transparent;
+  border: 0;
+  width: 100%;
+  color: #e5e7eb; /* zinc-200 */
+}
+
+/* 네비게이션(월 전/다음) 간격 */
+.rc .react-calendar__navigation {
+  height: 42px;
+  margin-bottom: 8px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+.rc .react-calendar__navigation button {
+  color: inherit;
+  background: transparent;
+}
+
+/* 요일 헤더 정렬 + 밑줄 제거 */
+.rc .react-calendar__month-view__weekdays {
+  text-transform: none;
+}
+.rc .react-calendar__month-view__weekdays abbr[title] {
+  text-decoration: none;
+}
+
+/* 타일을 정사각형으로, 중앙 정렬 */
+.rc .react-calendar__tile {
+  position: relative;
+  height: var(--rc-tile-size);
+  padding: 0;
+  display: grid;
+  place-items: center;
+  border-radius: var(--rc-radius);
+  line-height: 1; /* 숫자 수직 정렬 안정화 */
+}
+
+/* 오늘/선택 스타일(다크톤) */
+.rc .react-calendar__tile--now {
+  background: rgba(255, 255, 255, 0.06);
+}
+.rc .react-calendar__tile--active {
+  background: rgba(59, 130, 246, 0.25); /* blue-500/25 */
+}
+
+/* 이벤트 개수 배지: 타일 하단 중앙에 작게 */
+.rc .rc-badge {
+  position: absolute;
+  bottom: 4px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 10px;
+  line-height: 1;
+  opacity: 0.8;
+  pointer-events: none;
+}
+
+/* 월/주 격자 균일화 (간격 들쭉 해결) */
+.rc .react-calendar__month-view__days__day {
+  flex-basis: calc(100% / 7);
+}
+
+/* 라벨 자체는 줄바꿈 방지 */
+.react-calendar__navigation__label {
+  white-space: nowrap;
+}
+
+/* '2025년 8월' 안에서만 간격 주기 */
+.react-calendar__navigation__label span {
+  margin: 0 10px; /* '년'과 '월' 사이 여백 */
+}
+
+/* 요일 헤더 약간 오른쪽 이동 */
+.rc .react-calendar__month-view__weekdays__weekday {
+  padding-left: 14px;
+}
+
+.react-calendar__navigation button {
+  min-width: unset; /* 기본 넓이 제한 제거 */
+}
+
+.react-calendar__navigation__prev2-button,
+.react-calendar__navigation__next2-button {
+  margin: 0 8px; /* << 와 <, > 와 >> 사이 간격 */
+}

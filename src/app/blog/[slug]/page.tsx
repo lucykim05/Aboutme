@@ -3,6 +3,7 @@ import path from 'path';
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import matter from 'gray-matter';
 import Link from 'next/link';
+import BlogCalendarInline from '@/components/features/BlogCalendarInline';
 
 export const dynamic = 'force-dynamic';
 
@@ -37,7 +38,18 @@ export default async function BlogPage({
         <p className="text-zinc-500 text-sm mb-8">{data.date}</p>
 
         <article className="prose prose-invert">
-          <MDXRemote source={content} />
+          <MDXRemote
+            source={content}
+            components={{
+              // frontmatter의 schedule을 Calendar에 주입
+              Calendar: (props: any) => (
+                <BlogCalendarInline
+                  events={(data as any).schedule ?? []}
+                  {...props}
+                />
+              ),
+            }}
+          />
         </article>
       </div>
     </div>
