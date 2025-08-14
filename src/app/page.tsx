@@ -1,19 +1,23 @@
 import HeroTerminal from '@/components/features/HeroTerminal';
 import AboutSection from '@/components/features/AboutSection';
 import SkillsSection from '@/components/features/SkillsSection';
+import SectionShell from '@/components/layout/SectionShell';
 
 export default function HomePage() {
   return (
-    <main className="h-screen overflow-y-scroll snap-y snap-mandatory">
-      <section className="h-screen snap-start">
+    <main className="h-screen overflow-y-auto snap-y snap-mandatory">
+      {/* 각 섹션은 화면 높이, 내부는 자유 스크롤 */}
+      <SectionShell>
         <HeroTerminal />
-      </section>
-      <section className="h-screen snap-start">
-        <AboutSection />
-      </section>
-      <section className="h-screen snap-start">
+      </SectionShell>
+
+      <SectionShell>
         <SkillsSection />
-      </section>
+      </SectionShell>
+
+      <SectionShell>
+        <AboutSection />
+      </SectionShell>
     </main>
   );
 }
