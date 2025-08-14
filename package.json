@@ -9,11 +9,13 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "date-fns": "^4.1.0",
     "framer-motion": "^12.12.1",
     "gray-matter": "^4.0.3",
     "next": "15.3.2",
     "next-mdx-remote": "^5.0.0",
     "react": "^19.0.0",
+    "react-calendar": "^6.0.0",
     "react-dom": "^19.0.0"
   },
   "devDependencies": {
