@@ -47,7 +47,7 @@ const skills: Record<string, { key: string; label: string }[]> = {
   'AI / LLM': [
     { key: 'ollama', label: 'Ollama' },
     { key: 'openai', label: 'OpenAI API' },
-    { key: 'vector-db', label: 'Vector DB' },
+    { key: 'langchain', label: 'Langchain' },
   ],
 };
 
